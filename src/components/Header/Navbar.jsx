@@ -7,7 +7,7 @@ import { FaUser } from "react-icons/fa";
 
 function Navbar() {
   return (
-    <main className="flex   border-b-[0.1px]   justify-around  items-center   p-3  ">
+    <main className="flex   border-b-[0.1px]  border-b-gray-200   justify-around  items-center   p-3  ">
       <div className="flex   justify-center items-center gap-3  ">
         <img src={logo} alt="logo" />
         <NavLink className="text-[#0C6967]  font-bold  " to="/">
@@ -45,7 +45,7 @@ function Navbar() {
       <div className="border p-1.5  relative rounded-full   group bg-black">
         <FaUser size={20} color="white" />
         <div
-          className="hidden   group-hover:flex  top-8   border-2 p-2  -left-7 
+          className="hidden   group-hover:flex  top-8   z-50  border-2 p-2  -left-7 
          bg-gray-500 text-white font-bold shadow-2xl rounded-md   gap-y-2  absolute  flex-col "
         >
           <NavLink className="hover:underline" to="/profile">
