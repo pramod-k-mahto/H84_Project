@@ -19,6 +19,11 @@ function Navbar() {
         <NavLink to="/menu">Our Menu </NavLink>
         <NavLink to="/services">Our Service </NavLink>
         <NavLink to="/allergyAdvised">Allergy Advice </NavLink>
+
+        
+        <NavLink to="/cartPage">cartPage </NavLink>
+
+
       </nav>
       <div className="space-x-3  flex   items-center">
         <NavLink

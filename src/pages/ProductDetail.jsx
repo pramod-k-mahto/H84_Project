@@ -1,9 +1,12 @@
 import { useLocation } from "react-router-dom";
 import { FaSquareMinus } from "react-icons/fa6";
 import { FaSquarePlus } from "react-icons/fa6";
+import { useContext } from "react";
+import { CartContext } from "../context/CartProvider";
 function ProductDetail() {
   const { state } = useLocation();
-//   console.log(state);
+  const { dispatch } = useContext(CartContext);
+
   return (
     <main className="bg-gray-100  p-1">
       <section className=" flex    bg-white m-auto mt-10  gap-5 p-8   w-275">
@@ -33,7 +36,16 @@ function ProductDetail() {
             <button className="w-52 p-3 bg-[#2abbe8] text-white  border">
               Buy Now
             </button>
-            <button className="w-52 p-3 bg-orange-500 text-white  border">
+            <button
+
+            
+              onClick={() => {
+                dispatch({ type: "addToCart", payload: state });
+              }}
+
+
+              className="w-52 p-3 bg-orange-500 text-white  border"
+            >
               Add To Cart
             </button>
           </div>
