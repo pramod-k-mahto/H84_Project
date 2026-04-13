@@ -10,35 +10,59 @@ const initialValue = {
 const cartReducer = (state, action) => {
   switch (action.type) {
     case "addToCart": {
-      //   console.log(action);
-      // todos:
-      // 1.collect the data or product
-      // 2.Check the product is exist or not
-      // 3.if product exist then do not do anythings
-      // 4.if product not exist , then add the product into todo , also  add   quantity
-      // 5.Return the new or update product or cartItems
       const isExist = state.cartItems.find((item) => {
         return item.id == action.payload.id;
       });
       if (isExist) {
+        alert(" Product already in Cart !");
         return state;
       } else {
         let newProduct = { ...action.payload, quantity: 1 };
         let newCartItem = [...state.cartItems, newProduct];
+        alert("New  Product  is added to  Cart !");
         return {
           cartItems: newCartItem,
         };
       }
     }
-    
     case "increment": {
-      return state;
+      // todo
+      // [{id:1,qty}]
+      // first get Id of that product
+      // find that product exist or not
+      // if found then increment qty.
+      // if not found do not do anythings
+      // console.log(action);
+      let newCartItem = state.cartItems.map((item) => {
+        return item.id == action.payload
+          ? { ...item, quantity: item.quantity + 1 }
+          : item;
+      });
+      return {
+        cartItems: newCartItem,
+      };
     }
     case "decrement": {
-      return state;
+      let newCartItem = state.cartItems.map((item) => {
+        return item.id == action.payload && item.quantity > 1
+          ? { ...item, quantity: item.quantity - 1 }
+          : item;
+      });
+      return {
+        cartItems: newCartItem,
+      };
     }
     case "delete": {
-      return state;
+      // collect the Id of that product
+      // filter out that product
+      // and return new CartItem
+      let newCartItem = state.cartItems.filter((item) => {
+        return item.id !== action.payload;
+      });
+      alert("Product is Removed from The cart !");
+      return {
+        cartItems: newCartItem,
+      };
     }
     case "clearCart": {
       return state;
